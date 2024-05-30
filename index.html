@@ -1,28 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
-  </head>
-  <body>
-    <div class="image"></div>
-    <div>
-      <table>
-        <tbody>
-          <tr>
-            <td class="image-1"></td>
-          </tr>
-          <tr>
-            <td class="image-2"></td>
-          </tr>
-          <tr>
-            <td class="image-3"></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </body>
+</head>
+<body>
+    <pre>use Bt_Service
+        CREATE TABLE Users (
+            id int PRIMARY KEY,
+            first_name VARCHAR(100),
+          last_name VARCHAR(100),
+          patronymic  VARCHAR(100),
+            phone VARCHAR(20),
+            login VARCHAR(50) UNIQUE,
+            password VARCHAR(50),
+            type VARCHAR(20) CHECK (type IN ('Менеджер', 'Мастер', 'Оператор', 'Заказчик'))
+        );
+        CREATE TABLE Requests (
+            id int PRIMARY KEY,
+            status VARCHAR(30) CHECK (status IN ('новая заявка','в процессе ремонта','готова к выдаче')),
+            completion_date DATE,
+            repair_parts TEXT,
+            master_id INT REFERENCES Users(id),
+            client_id INT REFERENCES Users(id)
+        );
+        CREATE TABLE Comments (
+            id int PRIMARY KEY,
+            message TEXT,
+            master_id INT REFERENCES Users(id),
+            request_id INT REFERENCES Requests(id)
+        );
+        CREATE TABLE Parts (
+            id int PRIMARY KEY,
+            name VARCHAR(100),
+            stock_quantity INT,
+            price NUMERIC
+        );
+        CREATE TABLE RequestParts (
+            id int PRIMARY KEY,
+            request_id INT REFERENCES Requests(id),
+            part_id INT REFERENCES Parts(id),
+            quantity INT
+        );</pre>
+        <a href="index1.html">but</a>
+</body>
 </html>

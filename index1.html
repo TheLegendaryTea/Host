@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <pre>private Model1 model;
+        public LoginForm()
+        {
+            InitializeComponent();
+            model = new Model1();
+        }
+        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string login = login_text.Text;
+            string password = password_text.Text;
+        
+            var users = model.Users.FirstOrDefault(c => c.login == login && c.password == password);
+            try
+            {
+                if (users != null)
+                {
+                    switch (users.type)
+                    {
+                        case "Менеджер":
+                            MenagerForm menagerFrom = new MenagerForm();
+                            menagerFrom.Show();
+                            MessageBox.Show($"Вход выполнен успешно! {users.type}");
+                            break;
+                        case "Мастер":
+                            MasterForm masterFrom = new MasterForm();
+                            masterFrom.Show();
+                            MessageBox.Show($"Вход выполнен успешно! {users.type}");
+                            break;
+                        case "Оператор":
+                            OperatorForm operatorFrom = new OperatorForm();
+                            operatorFrom.Show();
+                            MessageBox.Show($"Вход выполнен успешно! {users.type}");
+                            break;
+                        case "Заказчик":
+                            ClientForm clientFrom = new ClientForm();
+                            clientFrom.Show();
+                            MessageBox.Show($"Вход выполнен успешно! {users.type}");
+                            break;
+                    }
+                    this.Hide();
+        
+                }
+                else
+                {
+                    MessageBox.Show("Неправильный логин или пароль.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка запроса: " + ex.Message);
+                throw;
+            }
+            
+        }
+        
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                password_text.PasswordChar = '\0';
+            }
+            else
+            {
+                password_text.PasswordChar = '*';
+            }
+        }
+        
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            RegistrationForm registrationForm = new RegistrationForm();
+            registrationForm.Show();
+            this.Hide();
+        }</pre>
+        <a href="index2.html">but</a>
+</body>
+</html>

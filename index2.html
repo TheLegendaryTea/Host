@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        private Model1 model;
+        public RegistrationForm()
+        {
+            InitializeComponent();
+            model = new Model1();
+        }
+       
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                password.PasswordChar = '\0';
+                password_check.PasswordChar = '\0';
+            }
+            else
+            {
+                password.PasswordChar = '*';
+                password_check.PasswordChar= '*';
+            }
+        }
+       
+        private void RegistrationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+       
+        private void button1_Click(object sender, EventArgs e)
+        {
+       
+            if (first_name.Text == "" || last_name.Text == "" ||
+                patronymic.Text == "" || phone.Text == "" ||
+                login.Text == "" || password.Text == "" ||
+                password_check.Text == "")
+            {
+                MessageBox.Show("Empty rows!");
+            }
+            else
+            {
+                if (password_check.Text != password.Text)
+                {
+                    pass_error.Text = "They must be same";
+                }
+                else
+                {
+                    pass_error.Text = "";
+       
+                    try
+                    {
+                        Users users = new Users        private Model1 model;
+        public RegistrationForm()
+        {
+            InitializeComponent();
+            model = new Model1();
+        }
+       
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                password.PasswordChar = '\0';
+                password_check.PasswordChar = '\0';
+            }
+            else
+            {
+                password.PasswordChar = '*';
+                password_check.PasswordChar= '*';
+            }
+        }
+       
+        private void RegistrationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+       
+        private void button1_Click(object sender, EventArgs e)
+        {
+       
+            if (first_name.Text == "" || last_name.Text == "" ||
+                patronymic.Text == "" || phone.Text == "" ||
+                login.Text == "" || password.Text == "" ||
+                password_check.Text == "")
+            {
+                MessageBox.Show("Empty rows!");
+            }
+            else
+            {
+                if (password_check.Text != password.Text)
+                {
+                    pass_error.Text = "They must be same";
+                }
+                else
+                {
+                    pass_error.Text = "";
+       
+                    try
+                    {
+                        Users users = new Users
+                        {
+                            id = 11,
+                            first_name = first_name.Text,
+                            last_name = last_name.Text,
+                            patronymic = patronymic.Text,
+                            phone = phone.Text,
+                            login = login.Text,
+                            password = password.Text,
+                            type = null,
+                        };
+                        model.Users.Add(users);
+                        model.SaveChanges();
+                        MessageBox.Show("All good bro!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: ", ex.Message);
+                        throw;
+                    }
+       
+                }
+            }
+        }
+    
+                        {
+                            id = 11,
+                            first_name = first_name.Text,
+                            last_name = last_name.Text,
+                            patronymic = patronymic.Text,
+                            phone = phone.Text,
+                            login = login.Text,
+                            password = password.Text,
+                            type = null,
+                        };
+                        model.Users.Add(users);
+                        model.SaveChanges();
+                        MessageBox.Show("All good bro!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: ", ex.Message);
+                        throw;
+                    }
+       
+                }
+            }
+        }
+    </pre>
+</body>
+</html>
